@@ -2,6 +2,7 @@
 Josh Comeau css reset
   1. Use a more-intuitive box-sizing model.
 */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap");
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -59,13 +60,157 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
-@font-face {
-  font-family: "plus_jakarta_sansregular";
-  src: url("/assets/fonts/plusjakartawebsafe/plusjakartasans-variablefont_wght-webfont.woff") format("woff"), url("/assets/fonts/plusjakartawebsafe/plusjakartasans-variablefont_wght-webfont.woff") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
 body {
-  font-family: "plus_jakarta_sansregular";
-  font-weight: 700;
+  display: grid;
+  place-items: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  background-color: hsl(210deg, 60%, 96%);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+p {
+  color: hsl(219deg, 12%, 42%);
+}
+
+.notification-panel {
+  padding: 2em;
+  max-width: 620px;
+  background-color: hsl(0deg, 0%, 100%);
+  border-radius: 0.5rem;
+}
+
+.notification-header {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-block: 0.5em 1.5em;
+}
+.notification-header .notification-heading {
+  font-size: 1.2rem;
+}
+.notification-header .notification-unread {
+  font-size: 16px;
+  padding: 0.02em 0.4em;
+  background-color: hsl(219deg, 85%, 26%);
+  color: hsl(0deg, 0%, 100%);
+  border-radius: 0.3rem;
+}
+.notification-header .notification-unread:empty {
+  display: none;
+}
+.notification-header .notification-readAll {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.notification-header .notification-readAll:hover {
+  color: hsl(219deg, 85%, 26%);
+}
+
+.notification-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.notification-container {
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.notification-container .notification-profile {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+}
+
+.notification-container--unread {
+  background-color: hsl(210deg, 60%, 96%);
+}
+
+.notification-content {
+  width: 100%;
+}
+.notification-content .notification-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.notification-content .notification-data p {
+  display: block;
+}
+.notification-content .notification-data .notification-source {
+  font-weight: 800;
+}
+.notification-content .notification-data .notification-source:hover {
+  color: hsl(219deg, 85%, 26%);
+}
+.notification-content .notification-data .notification-type {
+  pointer-events: none;
+}
+.notification-content .notification-data .notification-post {
+  font-weight: 800;
+  color: hsl(219deg, 12%, 42%);
+}
+.notification-content .notification-data .notification-post:hover {
+  color: hsl(219deg, 85%, 26%);
+}
+.notification-content .notification-data .notification-group {
+  font-weight: 800;
+  color: hsl(219deg, 85%, 26%);
+}
+.notification-content .notification-data .notification-group:hover {
+  color: hsl(219deg, 85%, 26%);
+}
+.notification-content .notification-data .notification-picture {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.notification-content .notification-data .notification-picture:hover {
+  box-shadow: 0 0 0 5px hsl(205deg, 33%, 90%);
+}
+.notification-content .notification-data .notification-picture:empty {
+  display: none;
+}
+.notification-content .notification-data .notification-status--unread::after {
+  position: relative;
+  left: 0.3125rem;
+  display: inline-block;
+  content: "";
+  width: 7px;
+  height: 7px;
+  background-color: red;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.notification-content .notification-data .notification-date {
+  display: block;
+  pointer-events: none;
+}
+.notification-content .notification-pm {
+  margin-block: 0.5em 1em;
+  padding: 1em;
+  line-height: 1.2;
+  border: 1px solid hsl(205deg, 33%, 90%);
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+.notification-content .notification-pm:hover {
+  background-color: hsl(205deg, 33%, 90%);
+}
+.notification-content .notification-pm:empty {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

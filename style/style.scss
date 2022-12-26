@@ -3,6 +3,175 @@
 @import "./variables";
 
 body {
+    display: grid;
+    place-items: center;
     font-family: $plusJakartaSans;
-    font-weight: 700;
+    font-weight: 500;
+    font-size: $fs-body;
+    background-color: $clr-neutral-Verylightgrayishblue;
+}
+
+@mixin flex-group($gap, $justify) {
+    display: flex;
+    gap: $gap;
+    justify-content: $justify;
+}
+
+@mixin onHover($color) {
+    &:hover {
+        color: $color;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    color: $clr-neutral-Darkgrayishblue;
+}
+
+.notification-panel {
+    padding: 2em;
+    max-width: 620px;
+    background-color: $clr-neutral-white;
+    border-radius: .5rem;
+}
+.notification-header {
+    @include flex-group(1em, space-between);
+    align-items: baseline;
+    margin-block: .5em 1.5em;
+
+    .notification-heading {
+        font-size: $fs-heading;
+    }
+
+    .notification-unread {
+        font-size: 16px;
+        padding: .02em .4em;
+        background-color: $clr-primary-blue;
+        color: $clr-neutral-white;
+        border-radius: .3rem;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    .notification-readAll {
+        @include onHover($clr-primary-blue);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.notification-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.notification-container {
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    border-radius: .5rem;
+    cursor: pointer;
+
+    .notification-profile {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        pointer-events: none;
+    }
+}
+
+.notification-container--unread {
+    background-color: $clr-neutral-Verylightgrayishblue;
+}
+
+.notification-content {
+    width: 100%;
+
+    .notification-data {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        p {
+            display: block;
+        }
+        .notification-source {
+            @include onHover($clr-primary-blue);
+            font-weight: 800;
+        }
+
+        .notification-type {
+            pointer-events: none;
+        }
+
+        .notification-post {
+            @include onHover($clr-primary-blue);
+            font-weight: 800;
+            color: $clr-neutral-Darkgrayishblue;
+        }
+
+        .notification-group {
+            @include onHover($clr-primary-blue);
+            font-weight: 800;
+            color: $clr-primary-blue;
+        }
+
+        .notification-picture {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: .5rem;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 0 0 5px $clr-neutral-Lightgrayishblue;
+            }
+
+            &:empty {
+                display: none;
+            }
+        }
+
+        .notification-status--unread::after {
+            position: relative;
+            left: 0.3125rem;
+            display: inline-block;
+            content: "";
+            width: 7px;
+            height: 7px;
+            background-color: red;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .notification-date {
+            display: block;
+            pointer-events: none;
+        }
+    }
+
+    .notification-pm {
+        margin-block: .5em 1em;
+        padding: 1em;
+        line-height: 1.2;
+        border: 1px solid $clr-neutral-Lightgrayishblue;
+        border-radius: .3rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $clr-neutral-Lightgrayishblue;
+        }
+
+        &:empty {
+            display: none;
+        }
+    }
 }
